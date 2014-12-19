@@ -6,9 +6,7 @@ def useChineseFont():
     reportlab.rl_config.warnOnMissingFontGlyphs = 0
     import reportlab.pdfbase.pdfmetrics
     import reportlab.pdfbase.ttfonts
-    #reportlab.pdfbase.pdfmetrics.registerFont(reportlab.pdfbase.ttfonts.TTFont('kaiu','C:\\WINDOWS\\Fonts\\KAIU.TTF'))
-    #reportlab.pdfbase.pdfmetrics.registerFont(reportlab.pdfbase.ttfonts.TTFont('kaiu','/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf'))
-    reportlab.pdfbase.pdfmetrics.registerFont(reportlab.pdfbase.ttfonts.TTFont('kaiu','/usr/share/fonts/sil-mingzat/Mingzat-R.ttf'))
+    reportlab.pdfbase.pdfmetrics.registerFont(reportlab.pdfbase.ttfonts.TTFont('uming','./uming.ttc'))
     import reportlab.lib.fonts
     reportlab.lib.fonts.ps2tt = lambda psfn: ('kaiu', 0, 0)
     reportlab.lib.fonts.tt2ps = lambda fn,b,i: 'kaiu'

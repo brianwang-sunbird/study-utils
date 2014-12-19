@@ -70,7 +70,7 @@ def drawClock(c, x, y, hour, minu):
 
 def drawNumber(c, x, y, r, deg, num):
     from reportlab.lib.colors import gray, black
-    c.setFont("kaiu", 10)
+    c.setFont("uming", 10)
     c.setFillColor(gray)
     x1 = r * math.sin(deg / 180. * math.pi) + x
     y1 = r * math.cos(deg / 180. * math.pi) + y
@@ -87,7 +87,7 @@ def drawHand(c, x, y, r1, r2, deg):
 def generate(c, page):
     sectiony = 3
     gridy = 9 / sectiony
-    c.setFont("kaiu", 16)
+    c.setFont("uming", 16)
     from reportlab.lib.units import inch
     from reportlab.lib.colors import black
     # draw basic form
@@ -105,7 +105,7 @@ def generate(c, page):
         tm = random.randint(0, 59)
         x = inch * 1.1 + (6.5 / 2) * inch * int(i/sectiony)
         y = 9.7 * inch - (i % sectiony) * inch * gridy
-        c.setFont("kaiu", 16)
+        c.setFont("uming", 16)
         c.drawString(x, y, '%d' % (i + 1))
         drawClock(c, x + inch, y - (inch * 0.9), th, tm)
 
@@ -115,7 +115,7 @@ def generate(c, page):
     from datetime import datetime
     dt_obj = datetime.now()
     date_str = dt_obj.strftime("%Y-%m-%d %H:%M:%S")
-    c.setFont("kaiu", 12)
+    c.setFont("uming", 12)
     c.drawString((8.5 - 3) * inch, 0.8 * inch, date_str)
     
 def main():
