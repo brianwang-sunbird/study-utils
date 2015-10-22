@@ -699,7 +699,6 @@ party	/p'&#x251;rti/
 pass	/p'&#xe6;s/
 past	/p'&#xe6;st/
 pay	/p'e/
-pay  ment 
 pen	/p'&#x25b;n/
 pencil	/p'&#x25b;ns&#x259;l/
 people	/p'ip&#x259;l/
@@ -1152,7 +1151,6 @@ appetite	/'&#xe6;p&#x259;t,&#x251;&#x26a;t/
 apply	/&#x259;pl'&#x251;&#x26a;/
 apron	/'epr&#x259;n/
 argue	/'&#x251;rgju/
-arguement 
 arm	/'&#x251;rm/
 armchair	/'&#x251;rmt&#x283;,&#x25b;r/
 arrange	/&#x25a;'end&#x292;/
@@ -1714,7 +1712,6 @@ meaning	/m'in&#x26a;&#x14b;/
 means	/m'inz/
 measurable	/m'&#x25b;&#x292;&#x25a;&#x259;b&#x259;l/
 measure	/m'&#x25b;&#x292;&#x25a;/
-measure  ment 
 medicine	/m'&#x25b;d&#x259;s&#x259;n/
 meeting	/m'it&#x26a;&#x14b;/
 melody	/m'&#x25b;l&#x259;di/
@@ -2140,7 +2137,6 @@ trap	/tr'&#xe6;p/
 travel	/tr'&#xe6;v&#x259;l/
 treasure	/tr'&#x25b;&#x292;&#x25a;/
 treat	/tr'it/
-treat  ment 
 trial	/tr'&#x251;&#x26a;&#x259;l/
 triangle	/tr'&#x251;&#x26a;,&#xe6;&#x14b;g&#x259;l/
 trick	/tr'&#x26a;k/
@@ -2235,9 +2231,7 @@ adopt	/&#x259;d'&#x251;pt/
 advanced	/&#x259;dv'&#xe6;nst/
 advantage	/&#xe6;dv'&#xe6;nt&#x26a;d&#x292;/
 adventure	/&#xe6;dv'&#x25b;nt&#x283;&#x25a;/
-advertise(ment 
 advertisement	/&#x259;dv'&#x25a;t&#x259;zm&#x259;nt/
-ad) 
 advice	/&#xe6;dv'&#x251;&#x26a;s/
 advise	/&#xe6;dv'&#x251;&#x26a;z/
 adviser	/&#xe6;dv'&#x251;&#x26a;z&#x25a;/
@@ -6698,3 +6692,8 @@ Xerox	/z'&#x26a;r&#x251;ks/
 xerox	/z'&#x26a;r&#x251;ks/
 yearn	/j'&#x25a;n/
 zeal	/z'il/
+argument	/'&#x251;rgj&#x259;m&#x259;nt/
+measurement	/m'&#x25b;&#x292;&#x25a;m&#x259;nt/
+treatment	/tr'itm&#x259;nt/
+payment	/p'em&#x259;nt/
+advertise	/'&#xe6;dv&#x25a;t,&#x251;&#x26a;z/
