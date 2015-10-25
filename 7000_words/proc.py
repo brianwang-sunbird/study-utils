@@ -21,7 +21,7 @@ def filename(word):
 
 def translate(word):
 	#put_head(word)
-	cmd = "./SDCV \"" + word + "\" ./output/" + folder + "/" + filename(word) + ".html"
+	cmd = "./SDCV.sh \"" + word + "\" ./output/" + folder + "/" + filename(word) + ".html"
 	print cmd
 	commands.getstatusoutput(cmd)
 	#put_tail(word)
