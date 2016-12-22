@@ -3,25 +3,40 @@ import sys
 import urllib2
 import codecs
 
-class Word:
+class Beautifier:
+    def __init__(self):
+        pass
 
+    def apply(self, content, phonetic):
+        content = self.eol_with_brackets(content)
+        parts = content.split('\\n')
+        outs = []
+        for part in parts:
+            #print '[' + part + ']'
+            out = self.replace_phonetic(part, phonetic)
+            out = self.color_type(out)
+            outs.append(out)        
+        return '<br/>'.join(outs)
+
+    def eol_with_brackets(self, content):
+        return content.replace('(\\n', '(')
+    
+    def color_type(self, line):
+        if line[0:2] == '<<' and line[-2:] == '>>':
+            return '<font color="red">' + line + '</font>'
+        else:
+            return line
+
+    def replace_phonetic(self, line, phonetic):
+        if line[0] == '[' and line[-1] == ']':
+            return phonetic
+        else:
+            return line
+
+class PhoneticHelper:
     def __init__(self, w):
         self.word = w
-        self.phonetic = False
-        self.content = ''
-
-    def set_phonetic(self, phonetic):
-        self.phonetic = phonetic
-
-    def set_content(self, content):
-        if self.phonetic:
-            parts = content.split('\\n')
-            p = parts[1].strip()
-            if p[0] == '[' and p[-1] == ']':
-                parts[1] = self.phonetic
-            self.content = '<br/>'.join(parts)
-        else:
-            self.content = content
+        self.phonetic = ''
 
     def fetch_phonetic(self):
         # Get phonetic from cdict.net
@@ -40,25 +55,73 @@ class Word:
         if len(phonetic) != 0:
             self.phonetic = phonetic
         else:
-            self.phonetic = False
+            self.phonetic = ''
 
     def __repr__(self):
-        if self.phonetic:
-            return self.word + '\t' + self.phonetic
-        else:
-            return self.word
+        return self.word + '\t' + self.phonetic
 
-    def to_dict(self):
-        return self.word + '\t' + self.content
+class Entry:
+    def __init__(self, w):
+        self.word = w
+        self.content = ''
+
+    def set_content(self, content):
+        #if self.phonetic:
+        #    parts = content.split('\\n')
+        #    p = parts[1].strip()
+        #    if p[0] == '[' and p[-1] == ']':
+        #        parts[1] = self.phonetic
+        #    self.content = '<br/>'.join(parts)
+        #else:
+        self.content = content
+
+    def __repr__(self):
+        return self.word + '\n' + self.content
+
+class Dictionary:
+    def __init__(self, filename):
+        self.entries = {}
+        dict_f = file(filename, 'r')
+        i = 0
+        for line in dict_f:
+            i = i + 1
+            line = line.replace('\n', '')
+            parts = line.split('\t')
+            word = parts[0]
+            entry = Entry(word)
+            if len(parts) > 1:
+                entry.set_content(parts[1])
+            self.entries[word] = entry
+
+        dict_f.close()
+        print 'Load %d entries from %s' % (len(self.entries), filename)
+
+    def get_entry(self, word):
+        if word in self.entries:
+            return self.entries[word]
+        else:
+            return None
 
 def main():
+    dicPhonetic = Dictionary('phonetic.txt')
+    apple = dicPhonetic.get_entry('apple')
+    phonetic = apple.content
+
+    b = Beautifier()
+    dic21 = Dictionary('21shijishuangxiangcidian-big5.txt')
+    apple = dic21.get_entry('apple')
+    #apple.fetch_phonetic()
+    print apple
+    print b.apply(apple.content, phonetic)
+
+def old_main():
     words = {}
 
-    # Words
+    # Entrys
     words_f = file('7000_words.txt', 'r')
     for line in words_f:
         line = line.replace('\n', '').strip()
-        word = Word(line)
+        word = Entry(line)
         words[line] = word
 
     words_f.close()
@@ -73,7 +136,7 @@ def main():
         if key in words:
             word = words[key]
         else:
-            word = Word(key)
+            word = Entry(key)
             words[key] = word
 
         if len(parts) > 1:
@@ -118,6 +181,6 @@ if __name__ == '__main__':
     if len(sys.argv) == 1:
         main()
     else:
-        word = Word(sys.argv[1])
+        word = Entry(sys.argv[1])
         word.fetch_phonetic()
         print word  
